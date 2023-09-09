@@ -240,9 +240,4 @@ app.get('/',(req,res) => {
 })
 
 
-setInterval(() => {
-  axios.get('/').then(() => console.log('Server hit: internal')).catch((e) => console.log('error, check logs',e))
-},1000*60*13)
-
-
 app.listen(process.env.PORT || 3000, () => console.log("Server alive"));
