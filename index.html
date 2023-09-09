@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Software</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      .loader {
+        border: 4px solid #f3f3f3; /* Light grey */
+        border-top: 4px solid blue; /* Blue */
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 500ms linear infinite;
+        display: none;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .tilt {
+        font-family: "Tilt Prism", cursive;
+      }
+    </style>
+  </head>
+  <body>
+    <span class="flex items-center gap-x-2 absolute top-12 left-12"
+      ><img
+        src="https://freesvg.org/img/Infinity-Symbol.png"
+        class="w-12 h-12"
+      /><span class="text-blue-500 tilt font-bold text-lg">Leads</span></span
+    >
+
+    <section class="text-gray-600 body-font">
+      <div
+        class="container mx-auto flex px-5 md:pt-20 pt-40 md:flex-row flex-col items-center"
+      >
+        <div
+          class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left items-center text-center"
+        >
+          <h1
+            class="title-font tilt sm:text-5xl text-3xl mb-4 font-bold text-black"
+          >
+            Welcome to Software,Harrison &#128075;
+          </h1>
+          <p class="mb-8 leading-relaxed">
+            Witness how this software empowers you to instantly get live list of
+            businesess from any city around the world or from multiple cities
+            with custom filters.
+          </p>
+          <form class="flex flex-col gap-y-4 w-full justify-center items-center" id="form">
+            <div class="flex gap-x-2 w-full">
+              <input
+                type="text"
+                required
+                id="city"
+                placeholder="Any city on earth"
+                name="city"
+                class="w-1/3 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+
+              <input
+                type="text"
+                required
+                id="query"
+                placeholder="Query"
+                name="query"
+                class="w-1/3 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+
+              <input
+                type="email"
+                required
+                id="email"
+                placeholder="Your email"
+                name="query"
+                class="w-1/3 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+
+            </div>
+
+            <button
+              id="submit"
+              type="submit"
+              class="text-white flex gap-x-2 items-center bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+            >
+              <span>Search now!</span>
+              <span class="loader"></span>
+            </button>
+          </form>
+        </div>
+        <lottie-player
+          src="https://lottie.host/92e7289a-4caa-41e9-8408-a684ac0fa567/yKx7KfpGaZ.json"
+          background="#ffffff"
+          speed="1"
+          style="width: 500px; height: 500px"
+          loop
+          autoplay
+          direction="1"
+          mode="normal"
+        ></lottie-player>
+      </div>
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,96L48,122.7C96,149,192,203,288,202.7C384,203,480,149,576,154.7C672,160,768,224,864,234.7C960,245,1056,203,1152,202.7C1248,203,1344,245,1392,266.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>    </section>
+
+    <section class="hidden" id="section2">
+      <div class="container px-5 py-12 mx-auto">
+        <h1 class="font-bold text-4xl mb-10 tilt mx-auto text-center">
+          <span id="noresults" class="mr-2"></span> Results for
+          <span id="place">insert</span>
+        </h1>
+        <div class="flex items-center gap-x-4">
+          <button
+            id="download"
+            class="text-white flex gap-x-2 items-center bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+          >
+            <span>Download results in .json file</span>
+          </button>
+          <a id="downloadAnchorElem" style="display: none"></a>
+          <input type="text" id="copyAnchorElem" class="hidden" value="" />
+          <button
+            id="copy"
+            class="text-white flex gap-x-2 items-center bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg"
+          >
+            <span>Copy results</span>
+          </button>
+        </div>
+        <div class="grid md:grid-cols-3 grid-cols-1 gap-4 my-4" id="results"></div>
+      </div>
+    </section>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+      integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      let section2 = document.getElementById("section2");
+
+      let form = document.getElementById('form')
+
+      console.log(form)
+
+      form.onsubmit = function (event) {
+        event.preventDefault()
+        alert('Leads will be sent to you within 5 minutes. Thank You.')
+
+        let city = document.getElementById("city").value;
+        let query = document.getElementById("query").value;
+        let email = document.getElementById("email").value;
+        let results = document.getElementById("results");
+        let loader = document.querySelector(".loader");
+
+        let downloadbtn = document.getElementById("download");
+        let copybtn = document.getElementById("copy");
+
+        let data;
+
+        function download() {
+          console.log("ran event");
+          var dataStr =
+            "data:text/json;charset=utf-8," +
+            encodeURIComponent(JSON.stringify(data));
+          var dlAnchorElem = document.getElementById("downloadAnchorElem");
+          dlAnchorElem.setAttribute("href", dataStr);
+          dlAnchorElem.setAttribute("download", "leads.json");
+          dlAnchorElem.click();
+        }
+
+        function copy() {
+          var copyElem = document.getElementById("copyAnchorElem");
+          copyElem.value = JSON.stringify(data);
+          console.log(copyElem.value, "is value");
+          /* Select the text field */
+          copyElem.focus();
+          copyElem.select();
+
+          copyElem.setSelectionRange(0, 99999); // For mobile devices
+
+          // Copy the text inside the text field
+          navigator.clipboard.writeText(copyElem.value);
+
+          alert("Copied successfully");
+        }
+
+        downloadbtn.addEventListener("click", download);
+        copybtn.addEventListener("click", copy);
+
+        loader.style.display = "block";
+        axios
+          .get(
+            `https://scraper-3a13.onrender.com/custom/${city}?query=${query}&email=${email}`
+          )
+          .then((res) => {
+            section2.style.display = "block";
+            data = res.data;
+
+            console.log(res.data);
+            document.getElementById("place").innerText = query;
+            document.getElementById("noresults").innerText = res.data.length;
+            res.data.forEach((elem) => {
+              results.insertAdjacentHTML(
+                "beforeend",
+                `<div class="p-4">
+              <div class="h-full shadow-md bg-gray-100 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+                <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">${elem.category}</h2>
+                <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">${elem.storeName}</h1>
+                <p class="leading-relaxed mb-3">${elem.address}</p>
+                <a href=${elem.googleUrl} class="text-green-700 underline">Learn More</a>
+                <div class="text-center mt-2 leading-none flex justify-center absolute bottom-0 left-0 w-full py-4">
+                  <span class="text-gray-400 mr-3 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                   ${elem.ratingText}
+                  </span>
+                </div>
+              </div>
+            </div>`
+              );
+            });
+            loader.style.display = "none";
+          })
+          .catch((err) => {
+            loader.style.display = "block";
+            console.log(err);
+          });
+      }
+    </script>
+  </body>
+</html>
