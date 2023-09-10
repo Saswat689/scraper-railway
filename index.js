@@ -55,7 +55,7 @@ async function searchGoogleMaps(query) {
         await new Promise((resolve, reject) => {
           var totalHeight = 0;
           var distance = 1000;
-          var scrollDelay = 40000;
+          var scrollDelay = 80000;
 
           var timer = setInterval(async () => {
             var scrollHeightBefore = wrapper.scrollHeight;
@@ -177,7 +177,6 @@ async function searchCity(q, c,email,res) {
   });
 
   if (!result) {
-    searchCity(q,c,email,res)
     //fail
     const mail_option = {
       from: "saswatsingh629@gmail.com",
